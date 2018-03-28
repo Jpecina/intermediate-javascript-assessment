@@ -13,7 +13,11 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
+function callBinding(magArr,updFunc,id){
+    return function updFunc(magArr,id){
+        
+    }
+}
 
 
 // *************
