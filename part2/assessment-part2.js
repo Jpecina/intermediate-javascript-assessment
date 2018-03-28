@@ -44,8 +44,20 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-
+.then(response => {
+  firstUser = response.data[0]
+  return response
+  // console.log(response.data[0])
+})
+.then(response => {
+  // console.log(response.data[2])
+  thirdUser = response.data[2]
+  return response.data[9]
+})
 }
+noWeakLink()
+// console.log("1st",firstUser);
+// console.log("3rd",thirdUser);
 
 
 
@@ -75,7 +87,9 @@ function large() {
 }
 // CODE HERE...
 
-
+let boundToElephant = function(elephant,large){
+  return large(elephant)
+}
 
 // *************
 // * PROBLEM 3 *
@@ -88,7 +102,9 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
-
+function deathStar(capFunc,crewObj){
+    return capFunc(crewObj)
+}
 
 
 // *************
@@ -103,7 +119,11 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
-
+function accountingOffice(assets){
+  return function accountant(liabilities){
+    return assets + liabilities
+  }
+}
 
 
 // *************
@@ -128,7 +148,14 @@ function large() {
 // };
 
 // CODE HERE...
-
+// function forgetter(string){
+//   return function rememberall(str){
+//     {
+//       name:'',
+//       remember: [] 
+//     }
+//   }
+// }
 
 
 // *************
@@ -156,3 +183,24 @@ function large() {
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+function frodo(shv,sdv){
+  let hunger = shv;
+  let danger = sdv;
+    const methods = {
+    dinnerOverFire(){
+      return{
+        hunger: hunger -= 25,
+        danger: danger += 40
+      }
+    },
+    hidingInBush(){
+      return {
+        hunger: hunger += 35,
+        danger: danger -= 20
+      }
+    }
+  }
+  return methods.dinnerOverFire
+}
+
+console.log(frodo(44,69))
